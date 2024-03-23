@@ -8,16 +8,10 @@ datasource db {
 }
 
 model Answer {
-  id         Int     @id @default(autoincrement())
-  artistName String[]
-  seconds    Int
-  genre      String
-  category   String
-  sentiment  Int
-  wpm        Float
-  listens    Int
-  artistId   Int?
-  artist     Artist? @relation(fields: [artistId], references: [id])
+  id          Int     @id @default(autoincrement())
+  answer      String
+  question    Question @relation(fields: [questionId], references: [id])
+  questionId  Int
 }
 
 model Question {
@@ -29,11 +23,14 @@ model Question {
 }
 
 model Set {
-  id        Int    @id @default(autoincrement())
-  name      String
-  questions Question[]
-  user      User @relation(fields: [userId], references: [id])
-  userId    Int
+  id           Int    @id @default(autoincrement())
+  name         String
+  subject      String
+  questions    Question[]
+  plays        Int?
+  uniqueVisits Int?
+  user         User @relation(fields: [userId], references: [id])
+  userId       Int
 }
 
 model User {
