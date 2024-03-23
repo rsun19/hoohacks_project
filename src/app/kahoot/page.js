@@ -1,12 +1,10 @@
 import React from 'react'
-import Navbar from './navbar'
-import House from './home'
+import Lobby from './lobby'
 
 export default function Home () {
   return (
     <>
-      <Navbar />
-      <House />
+      <Lobby />
     </>
   )
 }
