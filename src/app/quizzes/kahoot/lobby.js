@@ -33,7 +33,7 @@ const LobbyPage = () => {
           <li key={index} className="player-item">{player}</li>
         ))}
       </ul>
-      <Link href="/kahoot/game" passHref>
+      <Link href="/quizzes/kahoot/game" passHref>
         <button className="start-game-button">Start Game</button>
       </Link>
     </div>

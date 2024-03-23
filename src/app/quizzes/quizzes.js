@@ -15,7 +15,7 @@ const QuizzesPage = () => {
       <div className="quizzes-list">
         {quizzes.map((quiz) => (
           <div key={quiz.id} className="quiz-item">
-            <a href={`/quizzes/${quiz.id}`}>{quiz.title}</a>
+            <a href={`/quizzes/kahoot`}>{quiz.title}</a>
           </div>
         ))}
       </div>
