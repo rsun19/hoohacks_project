@@ -1,10 +1,10 @@
 import React from 'react'
-import Lobby from './lobby'
+import Game from './game'
 
 export default function Home () {
   return (
-    <>
-      <Lobby />
-    </>
+    <div>
+      <Game />
+    </div>
   )
 }

@@ -1,0 +1,72 @@
+.scoreboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #ffffff;
+  background: linear-gradient(-45deg, #afff5f, #ffa3c6, #fff279, #91ffe5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.title {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.item {
+  background-color: rgba(255, 255, 255, 0.85);
+  margin: 1rem 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.playerName {
+  font-weight: 600;
+}
+
+.score {
+  font-weight: 600;
+  color: #ffdf00;
+}
+
+.next-question-button {
+  margin-top: 2rem;
+}
+
+.next-question-button button {
+  background-color: #ff8c00;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.next-question-button button:hover {
+  background-color: #ff7b00;
+  transform: scale(1.05);
+}

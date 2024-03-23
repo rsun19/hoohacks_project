@@ -1,0 +1,43 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(-45deg, #afff5f, #ffa3c6, #fff279, #91ffe5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #ffffff; /* Adjust text color for better readability on the gradient background */
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Additional styles for elements inside your game container for better appearance */
+.question-section, .score-section, .answer-section {
+  text-align: center;
+  max-width: 600px; /* Adjust based on your preference */
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better visibility */
+  border-radius: 10px;
+  margin: 10px 0; /* Spacing */
+}
+
+.answer-section button {
+  display: block;
+  margin: 10px auto; /* Center buttons vertically */
+  padding: 10px 20px;
+  background-color: #ffffff; /* Light background for buttons */
+  color: #000000; /* Dark text for buttons */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.answer-section button:hover {
+  background-color: #dddddd;
+}
