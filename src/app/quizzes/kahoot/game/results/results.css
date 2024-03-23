@@ -1,0 +1,46 @@
+.results-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ffffff; /* Adjust text color for better readability */
+    background: linear-gradient(-45deg, #afff5f, #ffa3c6, #fff279, #91ffe5);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  ol {
+    list-style: none; 
+    padding: 0;
+  }
+  
+  li {
+    background-color: rgba(255, 255, 255, 0.8); 
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .view-quizzes-button {
+    padding: 10px 15px;
+    margin-top: 20px; /* Spacing above the button */
+    font-size: 1em;
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-quizzes-button:hover {
+    background-color: #003399;
+  }
+  

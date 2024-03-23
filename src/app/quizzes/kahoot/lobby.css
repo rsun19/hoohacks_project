@@ -1,0 +1,60 @@
+.lobby-container {
+    display: flex;
+    flex-direction: column; /* Stack flex items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #afff5f, #ffa3c6, #fff279, #91ffe5);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+  
+  .lobby-content {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 15px;
+  }
+  
+  .content {
+    text-align: center;
+  }
+
+  .lobby-title {
+    margin-bottom: 0px;
+    font-size: 4rem;
+  }
+  
+  .player-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .start-game-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
