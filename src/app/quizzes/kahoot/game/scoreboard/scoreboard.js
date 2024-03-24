@@ -3,10 +3,14 @@ import React from 'react'
 import { useSearchParams } from 'next/navigation'
 import './scoreboard.css'
 
+// eslint-disable-next-line react/prop-types
 const Scoreboard = ({ playerScores }) => {
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams('next')
   const currentQuestionIndex = parseInt(searchParams.get('next') || '0', 10)
-
+  const userString = searchParams.get('user')
+  const scoreString = searchParams.get('score')
+  const userList = userString.split(',')
+  const scoreList = scoreString.split(',')
   const handleNextQuestion = () => {
     window.location.href = `/quizzes/kahoot/game?next=${currentQuestionIndex}`
   }
@@ -22,6 +26,12 @@ const Scoreboard = ({ playerScores }) => {
           </li>
         ))}
       </ul>
+      <div>
+        {userList[0]}: {scoreList[0]}
+      </div>
+      <div>
+        {userList[1]}: {scoreList[1]}
+      </div>
       <div className="next-question-button">
         <button onClick={handleNextQuestion}>Next Question</button>
       </div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams, redirect } from 'next/navigation'
 import './game.css'
+import { SessionProvider, useSession, signIn } from 'next-auth/react'
 
 const questions = [
   {
@@ -28,7 +29,16 @@ const questions = [
 const maxPoints = 1000
 const questionTimer = 10
 
+export default function GameHandler () {
+  return (
+    <SessionProvider>
+      <Game />
+    </SessionProvider>
+  )
+}
+
 const Game = () => {
+  const { data: session, status } = useSession()
   const searchParams = useSearchParams()
   const initialQuestionIndex = parseInt(searchParams.get('next') || '0', 10)
   const [currentQuestion] = useState(initialQuestionIndex)
@@ -36,13 +46,25 @@ const Game = () => {
   const [timer, setTimer] = useState(questionTimer)
   const [playerScores, setPlayerScores] = useState({})
 
+  let email = ''
+
+  useEffect(() => {
+    if (status === 'authenticated' && session) {
+      email = session.user.email
+    }
+  }, [[status, session]])
+
   useEffect(() => {
     if (timer === 0) {
       const nextQuestion = currentQuestion + 1
       if (nextQuestion < questions.length) {
-        redirect(`/quizzes/kahoot/game/scoreboard?next=${currentQuestion + 1}`)
+        if (nextQuestion === 0) {
+          redirect(`/quizzes/kahoot/game/scoreboard?next=${currentQuestion + 1}&user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=120,100`)
+        } else {
+          redirect(`/quizzes/kahoot/game/scoreboard?next=${currentQuestion + 1}&user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=240,100`)
+        }
       } else {
-        redirect('/quizzes/kahoot/game/results')
+        redirect('/quizzes/kahoot/game/results?user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=240,100')
         setTimer(questionTimer)
         setStartTime(Date.now())
       }
@@ -79,9 +101,13 @@ const Game = () => {
 
     const nextQuestion = currentQuestion + 1
     if (nextQuestion < questions.length) {
-      redirect('/quizzes/kahoot/game/scoreboard')
+      if (currentQuestion === 0) {
+        redirect('/quizzes/kahoot/game/scoreboard?user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=120,100')
+      } else {
+        redirect('/quizzes/kahoot/game/scoreboard?user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=240,100')
+      }
     } else {
-      redirect('/quizzes')
+      redirect('/quizzes/results')
     }
   }
 
@@ -111,4 +137,4 @@ const Game = () => {
   )
 }
 
-export default Game
+// export default GameHandler
