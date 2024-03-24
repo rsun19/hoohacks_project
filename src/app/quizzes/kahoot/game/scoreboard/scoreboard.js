@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import './scoreboard.css'
 import { socket } from '../../../../socket.js'
@@ -13,6 +13,7 @@ const Scoreboard = ({ playerScores }) => {
   const scoreString = searchParams.get('score')
   const userList = userString.split(',')
   const scoreList = scoreString.split(',')
+  const [scoreMap, setScoreMap] = useState(new Map())
   const handleNextQuestion = () => {
     socket.emit('startNextRound', currentQuestionIndex.toString())
     console.log(currentQuestionIndex.toString)
@@ -24,10 +25,24 @@ const Scoreboard = ({ playerScores }) => {
 
     // socket.connect('http://localhost:3030')
     socket.on('connect', function () {
+      socket.emit('getPlayerScores', 'hello')
+      socket.on('givingPlayerScore', function (data) {
+        console.log(data)
+        if (scoreMap) {
+          setScoreMap(JSON.parse(data))
+        }
+      })
       socket.on('startNextRoundNow', function (data) {
         console.log(data)
         startFutureRound(Number(data))
       })
+    })
+    socket.emit('getPlayerScores', 'hello')
+    socket.on('givingPlayerScore', function (data) {
+      console.log(data)
+      if (scoreMap) {
+        setScoreMap(JSON.parse(data))
+      }
     })
     socket.on('startNextRoundNow', function (data) {
       console.log(data)
@@ -38,6 +53,14 @@ const Scoreboard = ({ playerScores }) => {
   return (
     <div className="scoreboard-container"> {/* Ensure this matches your CSS class */}
       <h2 className="title">Scoreboard</h2> {/* Title class for styling */}
+      {/* <ul className="list">
+      {Object.entries(scoreMap).map(([playerName, score], index) => (
+        <li key={index} className="item">
+          <span className="playerName">{playerName}</span>
+          <span className="score">{score}</span>
+        </li>
+      ))}
+      </ul> */}
       <ul className="list">
         {userList.map((user, index) => (
         <li key={index} className="item">
