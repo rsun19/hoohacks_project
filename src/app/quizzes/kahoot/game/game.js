@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState, useEffect } from 'react'
 import { useSearchParams, redirect } from 'next/navigation'
 import './game.css'
@@ -33,11 +34,15 @@ const Game = () => {
   const [currentQuestion, setCurrentQuestion] = useState(initialQuestionIndex)
   const [timer, setTimer] = useState(questionTimer)
   const [playerScores, setPlayerScores] = useState({})
-  const [showScore, setShowScore] = useState(false)
 
   useEffect(() => {
     if (timer === 0) {
-      redirect(`/kahoot/game/scoreboard?next=${currentQuestion + 1}`)
+      const nextQuestion = currentQuestion + 1
+      if (nextQuestion < questions.length) {
+        redirect(`/quizzes/kahoot/game/scoreboard?next=${currentQuestion + 1}`)
+      } else {
+        redirect('/quizzes/kahoot/game/results')
+      }
     } else {
       const countdown = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1)
@@ -71,35 +76,34 @@ const Game = () => {
 
     const nextQuestion = currentQuestion + 1
     if (nextQuestion < questions.length) {
-      redirect('/kahoot/game/scoreboard')
-      setShowScore(true)
+      redirect('/quizzes/kahoot/game/scoreboard')
+    } else {
+      redirect('/quizzes')
     }
   }
 
   return (
     <div className='game-container'>
-      {showScore ? (
-        <div className='score-section'>
-         <h2>Redirecting to Scoreboard...</h2>
-      </div>
-      ) : (
-        <>
-          <div className='question-section'>
-            <div className='question-count'>
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
-            </div>
+      <div className='question-section'>
+        <div className='question-count'>
+          <span>Question {currentQuestion + 1}</span>/{questions.length}
+        </div>
+        {questions[currentQuestion] ? (
+          <>
             <div className='question-text'>{questions[currentQuestion].questionText}</div>
             <div className='timer'>{timer}</div> {/* Display timer */}
-          </div>
-          <div className='answer-section'>
-            {questions[currentQuestion].answerOptions.map((answerOption, index) => (
-              <button key={index} onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>
-                {answerOption.answerText}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+            <div className='answer-section'>
+              {questions[currentQuestion].answerOptions.map((answerOption, index) => (
+                <button key={index} onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>
+                  {answerOption.answerText}
+                </button>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div>Loading question...</div>
+        )}
+      </div>
     </div>
   )
 }
