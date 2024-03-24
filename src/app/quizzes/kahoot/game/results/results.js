@@ -3,7 +3,6 @@ import React from 'react'
 import './results.css'
 import { useSearchParams } from 'next/navigation'
 
-
 const Results = ({ playerScores = {} }) => {
   // Ensure playerScores is an object before calling Object.entries
   const searchParams = useSearchParams('next')
@@ -21,7 +20,7 @@ const Results = ({ playerScores = {} }) => {
 
   return (
     <div className="results-container">
-      <h2>Quiz Results</h2>
+      <h2 className="results-title">Quiz Results</h2>
       <ol>
         {sortedScores.map(([playerName, score], index) => (
           <li key={index}>

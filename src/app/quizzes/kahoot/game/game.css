@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
 .game-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(-45deg, #afff5f, #ffa3c6, #fff279, #91ffe5);
+  background: linear-gradient(-45deg, #afff5f, #ffb1ea, #fff279, #91ffe5);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: #ffffff; /* Adjust text color for better readability on the gradient background */
@@ -21,17 +22,21 @@
   text-align: center;
   max-width: 600px; /* Adjust based on your preference */
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better visibility */
+  background-color: rgba(47, 129, 122, 0.5); /* Semi-transparent background for better visibility */
   border-radius: 10px;
   margin: 10px 0; /* Spacing */
+  font-family: 'Cute Font', cursive;
+  font-size: 2rem; /* Default to small size */
 }
 
 .answer-section button {
+  font-family: 'Cute Font', cursive;
+  font-size: 1.5rem; /* Default to small size */
   display: block;
   margin: 10px auto; /* Center buttons vertically */
   padding: 10px 20px;
   background-color: #ffffff; /* Light background for buttons */
-  color: #000000; /* Dark text for buttons */
+  color: #133b4e; /* Dark text for buttons */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -40,4 +45,8 @@
 
 .answer-section button:hover {
   background-color: #dddddd;
+}
+
+.answer-selected {
+  background-color: #dfbcff; 
 }

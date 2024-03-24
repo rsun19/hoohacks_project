@@ -1,8 +1,9 @@
 /* home.css */
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
 
 .bg-gradient-animation {
   /* Define gradient colors */
-  background: linear-gradient(-45deg, #ffafaf, #9fff9f, #9c9cff);
+  background: linear-gradient(-45deg, #9cffd6, #ffb1ea, #91ffe5,  #fff279);
   /* Set background size */
   background-size: 400% 400%;
   /* Apply animation */
@@ -23,7 +24,22 @@
 
 .button-container {
   position: absolute;
-  bottom: 240px; /* Adjust the distance from the bottom */
-  left: 70%; /* Position the button horizontally in the center */
-  transform: translateX(-50%);
+  bottom: 35%; /* Adjust the distance from the bottom */
+  left: 58%; /* Position the button horizontally in the center */
+}
+
+.cute-button {
+  font-family: 'Cute Font', cursive;
+  font-size: 1.5rem; /* Default to small size */
+  background-color: #38b2ac; /* bg-teal-400 */
+  color: #ffffff;
+  font-weight: 600; /* Semibold */
+  padding: 0.5rem 1.5rem; /* py-2 px-6 */
+  border-radius: 9999px; /* rounded-full */
+  transition: background-color 0.3s; /* duration-300 */
+}
+
+
+.cute-button:hover {
+  background-color: #319795; /* bg-teal-600 */
 }

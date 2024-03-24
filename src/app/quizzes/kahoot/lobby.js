@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import io from 'socket.io-client'
 import './lobby.css'
+import Navbar from '../../navbar'
 import getSessionDetails from '../../getSession'
 import { SessionProvider, useSession, signIn } from 'next-auth/react'
 import { socket } from '../../socket.js'
@@ -76,8 +77,10 @@ const LobbyPage = () => {
   }
 
   return (
+    <>
+    <Navbar />
     <div className="lobby-container">
-      <h1 className="lobby-title">Welcome to the Arena</h1>
+      <h1 className="lobby-title">Outwit, Outplay!</h1>
       <ul className="player-list">
         {players.map((player, index) => (
           <li key={index} className="player-item">{player}</li>
@@ -87,6 +90,7 @@ const LobbyPage = () => {
         <button className="start-game-button" onClick={startGame}>Start Game</button>
       {/* </Link> */}
     </div>
+    </>
   )
 }
 

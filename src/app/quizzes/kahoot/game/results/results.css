@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
 .results-container {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,7 @@
     align-items: center;
     height: 100vh;
     color: #ffffff; /* Adjust text color for better readability */
-    background: linear-gradient(-45deg, #afff5f, #ffa3c6, #fff279, #91ffe5);
+    background: linear-gradient(-45deg, #afff5f, #ffb1ea, #91ffe5,  #fff279);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
   }
@@ -14,6 +15,19 @@
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+  }
+  
+  .results-title {
+    font-family: 'Cute Font', cursive;
+    font-size: 5.5rem;
+    margin: 0rem 0;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  li.winner {
+    background-color: #ffec83; /* Highlight the winner with a different background */
+    color: #000; /* Ensure text is readable on the new background */
   }
   
   ol {
@@ -29,10 +43,11 @@
   }
   
   .view-quizzes-button {
+    font-family: 'Cute Font', cursive;
+    font-size: 1.5rem;
     padding: 10px 15px;
     margin-top: 20px; /* Spacing above the button */
-    font-size: 1em;
-    background-color: #0044cc;
+    background-color: #00758d;
     color: white;
     border: none;
     border-radius: 5px;
@@ -41,6 +56,6 @@
   }
   
   .view-quizzes-button:hover {
-    background-color: #003399;
+    background-color: #136e7e;
   }
   

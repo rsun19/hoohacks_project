@@ -1,0 +1,62 @@
+/* navbar.css - Custom styles for Navbar component */
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+.navbar {
+    background-color: #3e9e96; /* A shade of teal, similar to bg-teal-500 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-logo {
+    height: 2.15rem; /* Adjust the size as needed */
+    width: auto; /* Keep the aspect ratio of the logo */
+    margin-right: 0.5rem;
+  }
+  
+  .logo-text {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 2.00rem;
+    letter-spacing: 0.05em;
+    font-family: 'Cute Font', cursive;
+  }
+  
+  .nav-links-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link {
+    font-family: 'Cute Font', cursive;
+    font-size: 1.70rem;
+    color: #81e6d9;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    margin-right: 0.5rem; /* Adjust the space between links as needed */
+  }
+  
+  .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .login-button {
+    font-family: 'Cute Font', cursive;
+    font-size: 1.70rem;
+    color: #81e6d9;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.275rem;
+  }
+  
+  .login-button:hover {
+    color: #4dc0b5;
+    background-color: rgb(163, 255, 229);
+  }
+  
