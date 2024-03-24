@@ -4,25 +4,29 @@ import Link from 'next/link'
 import io from 'socket.io-client'
 import './lobby.css'
 
-const socket = io(process.env.NEXT_PUBLIC_SOCKET_IO_SERVER_URL, { autoConnect: false })
+const socket = io('http://localhost:3030')
 
 const LobbyPage = () => {
-  const [players, setPlayers] = useState(['Player 1', 'Player 2'])
+  const [players, setPlayers] = useState([])
+  const questions = [['q', ['a', 'a', 'a', 'a']], ['q', ['a', 'a', 'a', 'a']]]
 
   useEffect(() => {
-    socket.connect()
+    // get questions FIRST!!
 
-    socket.on('connect', () => {
-      console.log('Connected to socket.io server')
+    // socket.connect('http://localhost:3030')
+    socket.on('connect', function () {
+      // setInterval(function () {
+      socket.emit('userPresent', 'user1')
+      socket.emit('userPresent', 'user2')
+      // }, 3000)
+      socket.emit('questions', JSON.stringify(questions).toString())
+      console.log(JSON.stringify(questions).toString())
+      socket.on('currentPlayers', function (data) {
+        console.log(JSON.parse(data))
+        setPlayers(JSON.parse(data))
+      })
+      console.log('connected to localhost:3000')
     })
-
-    socket.on('lobbyUpdate', (updatedPlayers) => {
-      setPlayers(updatedPlayers)
-    })
-
-    return () => {
-      socket.disconnect()
-    }
   }, [])
 
   return (
