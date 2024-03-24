@@ -8,7 +8,7 @@ const Scoreboard = ({ playerScores }) => {
   const currentQuestionIndex = parseInt(searchParams.get('next') || '0', 10)
 
   const handleNextQuestion = () => {
-    window.location.href = `/kahoot/game?next=${currentQuestionIndex}`
+    window.location.href = `/quizzes/kahoot/game?next=${currentQuestionIndex}`
   }
 
   return (

@@ -2,7 +2,7 @@
 'use client'
 import React, { useState } from 'react'
 import Navbar from '../navbar'
-import saveCards from './save-cards'
+import { saveCards } from './save-cards'
 
 const cardMapping = new Map()
 cardMapping.set(0, ['', ''])

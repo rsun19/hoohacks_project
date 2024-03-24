@@ -9,7 +9,7 @@ const Results = ({ playerScores = {} }) => {
     .slice(0, 3)
 
   const goToViewQuizzes = () => {
-    window.location.href = '/kahoot/quizzes'
+    window.location.href = '/quizzes'
   }
 
   return (
