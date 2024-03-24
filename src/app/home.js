@@ -14,7 +14,7 @@ const Home = () => {
       {/* Overlayed Button */}
       <div className="button-container">
       <Link href="/quizzes">
-          <button className="text-sm md:text-lg lg:text-xl bg-teal-500 text-white font-semibold py-2 md:py-3 lg:py-4 px-6 md:px-10 lg:px-14 rounded-full hover:bg-teal-600 transition duration-300">
+      <button className="cute-button">
             Let&apos;s Go!
           </button>
         </Link>

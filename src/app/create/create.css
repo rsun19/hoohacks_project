@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+.create-container {
+  height: 100vh;
+  background: linear-gradient(-45deg, #afff5f, #ffb1ea, #fff279, #91ffe5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #ffffff; /* Adjust text color for better readability on the gradient background */
+}
+
+.quizmaker {
+  display: center;
+  font-family: 'Cute Font', cursive;
+  font-size: 5rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust text color for better readability on the gradient background */
+  }
+  

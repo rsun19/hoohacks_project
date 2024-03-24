@@ -19,19 +19,13 @@ const Scoreboard = ({ playerScores }) => {
     <div className="scoreboard-container"> {/* Ensure this matches your CSS class */}
       <h2 className="title">Scoreboard</h2> {/* Title class for styling */}
       <ul className="list">
-        {playerScores && Object.entries(playerScores).map(([playerName, score], index) => (
-          <li key={index} className="item"> {/* Item class for each score entry */}
-            <span className="playerName">{playerName}</span> {/* Player name styling */}
-            <span className="score">{score}</span> {/* Score styling */}
-          </li>
+        {userList.map((user, index) => (
+        <li key={index} className="item">
+          <span className="playerName">{user}</span>
+          <span className="score">{scoreList[index]}</span>
+        </li>
         ))}
       </ul>
-      <div>
-        {userList[0]}: {scoreList[0]}
-      </div>
-      <div>
-        {userList[1]}: {scoreList[1]}
-      </div>
       <div className="next-question-button">
         <button onClick={handleNextQuestion}>Next Question</button>
       </div>

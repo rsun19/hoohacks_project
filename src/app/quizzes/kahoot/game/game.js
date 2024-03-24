@@ -23,6 +23,15 @@ const questions = [
       { answerText: 'Creese', isCorrect: false },
       { answerText: 'Crowes', isCorrect: false }
     ]
+  },
+  {
+    questionText: 'Who is the Greek god of war?',
+    answerOptions: [
+      { answerText: 'Aphrodite', isCorrect: false },
+      { answerText: 'Apollo', isCorrect: true },
+      { answerText: 'Poseidon', isCorrect: false },
+      { answerText: 'Ares', isCorrect: false }
+    ]
   }
 ]
 
@@ -45,6 +54,7 @@ const Game = () => {
   const [startTime, setStartTime] = useState(Date.now())
   const [timer, setTimer] = useState(questionTimer)
   const [playerScores, setPlayerScores] = useState({})
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
 
   let email = ''
 
@@ -87,7 +97,8 @@ const Game = () => {
     return points
   }
 
-  const handleAnswerButtonClick = (isCorrect) => {
+  const handleAnswerButtonClick = (isCorrect, index) => {
+    setSelectedAnswerIndex(index)
     const endTime = Date.now()
     const timeTaken = (endTime - startTime) / 1000
     const points = calculatePoints(timeTaken)
@@ -123,7 +134,11 @@ const Game = () => {
             <div className='timer'>{timer}</div> {/* Display timer */}
             <div className='answer-section'>
               {questions[currentQuestion].answerOptions.map((answerOption, index) => (
-                <button key={index} onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>
+                <button
+                  key={index}
+                  className={`answer-button ${selectedAnswerIndex === index ? 'answer-selected' : ''}`}
+                  onClick={() => handleAnswerButtonClick(index)}
+                >
                   {answerOption.answerText}
                 </button>
               ))}

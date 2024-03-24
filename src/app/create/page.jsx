@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Navbar from '../navbar'
 import { saveCards } from './save-cards'
+import './create.css'
 
 const cardMapping = new Map()
 cardMapping.set(0, ['', ''])
@@ -83,10 +84,12 @@ const Create = () => {
   return (
     <>
       <Navbar />
+      <div className='create-container'>
+      <h2 className="quizmaker" >Create Quiz</h2>
       <div className='m-3'>
         <input type="text" id="setName" placeholder="Name your set" className= 'block rounded-lg py-2 px-3 border border-gray-300 bg-gray-50'/>
       </div>
-      <h3 className='ml-3 mb-3'>Cards</h3>
+      <h3 className='ml-3 mb-3'></h3>
       <div>
         {cards.map((card, index) => (
           <div key={index}>
@@ -105,6 +108,7 @@ const Create = () => {
         }}>
           Submit
         </div>
+      </div>
       </div>
     </>
   )

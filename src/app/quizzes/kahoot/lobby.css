@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
 .lobby-container {
     display: flex;
     flex-direction: column; /* Stack flex items vertically */
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(-45deg, #afff5f, #ffa3c6, #fff279, #91ffe5);
+    background: linear-gradient(-45deg, #afff5f, #ffb1ea, #91ffe5,  #fff279);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
   }
@@ -23,25 +25,30 @@
   }
 
   .lobby-title {
+    font-family: 'Cute Font', cursive;
+    color: #235560;
     margin-bottom: 0px;
-    font-size: 4rem;
+    font-size: 5rem;
   }
   
   .player-list {
+    font-family: 'Cute Font', cursive;
+    font-size: 2rem; /* Default to small size */
     list-style-type: none;
     padding: 0;
     margin-bottom: 20px;
   }
   
   .start-game-button {
-    background-color: #4CAF50; /* Green */
+    font-family: 'Cute Font', cursive;
+    font-size: 1.5rem; /* Default to small size */
+    background-color: #4caf90; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
@@ -57,4 +64,8 @@
     100% {
       background-position: 0% 50%;
     }
+}
+
+.start-game-button:hover {
+  background-color: #2c7978; /* bg-teal-600 */
 }

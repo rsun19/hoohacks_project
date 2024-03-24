@@ -1,27 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
 .quizzes-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
   min-height: 100vh;
+  background: linear-gradient(-45deg, #9cffd6, #ffb1ea, #91ffe5, #fff279);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .quizzes-list {
-  margin-top: 20px;
+  width: 70%; /* Set the width of the list to 70% of the screen width */
+  margin-top: 10px;
 }
 
 .quiz-item {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
-  margin: 10px;
+  margin: 10px auto; /* Center the blocks */
   background-color: #f0f0f0;
   border-radius: 5px;
   text-decoration: none;
-  color: #333;
+  color: #0c5958;
   font-size: 18px;
   transition: background-color 0.3s;
 }
 
 .quiz-item:hover {
   background-color: #ddd;
+}
+
+.quiz-title {
+  text-align: left;
+}
+
+.quiz-num-questions {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Apply Cute Font to the Quizzes title */
+.quizzes-title {
+  margin-top: 20px;
+  font-family: 'Cute Font', cursive;
+  font-size: 5rem;
+  color: #165c5b;
+  /* Additional styling can be added here */
 }
