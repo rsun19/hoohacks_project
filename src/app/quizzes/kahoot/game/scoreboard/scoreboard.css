@@ -37,16 +37,6 @@
   max-width: 600px;
 }
 
-.item {
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.85);
-  margin: 1rem 0;
-  padding: 10px 20px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .playerName {
   display: block;
@@ -83,17 +73,17 @@
 }
 
 .item {
-  background-color: rgba(255, 255, 255, 0.9); /* Lighter background for visibility */
-  color: #333; /* Darker font color for contrast */
-  margin: 1rem 0;
-  padding: 15px 20px; /* More padding for a larger box */
-  border-radius: 10px;
   display: flex;
-  justify-content: space-between; /* Keeps name and score on opposite ends */
+  justify-content: space-between;
   align-items: center;
-  max-width: 70%; /* Adjust width as needed */
-  width: 100%; /* Full width by default */
-  box-sizing: border-box; /* Includes padding in width */
+  padding: 10px 20px;
+  margin: 10px auto; /* Center the blocks */
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #0c5958;
+  font-size: 18px;
+  transition: background-color 0.3s;
 }
 
 /* Adjust font sizes as needed */
@@ -109,15 +99,4 @@
   color: #ffdf00; /* Keep the golden color for the score */
 }
 
-.create-quiz-container {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ace0f9, #fba0e3, #fff686, #8bf8b8);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
 
-/* Rest of your CSS */

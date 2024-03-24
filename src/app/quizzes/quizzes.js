@@ -3,7 +3,7 @@ import './quizzes.css'
 import Navbar from '../navbar'
 
 const quizzes = [
-  { id: 1, title: 'Random Trivia', numQuestions: 10 },
+  { id: 1, title: 'Random Trivia', numQuestions: 3 },
   { id: 2, title: 'Korean VQ 1-2', numQuestions: 8 },
   { id: 3, title: 'DMT2 Quiz 4', numQuestions: 15 },
   { id: 4, title: 'CSO2 Quiz 5', numQuestions: 5 },

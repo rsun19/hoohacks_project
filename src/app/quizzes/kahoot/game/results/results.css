@@ -20,27 +20,10 @@
   .results-title {
     font-family: 'Cute Font', cursive;
     font-size: 5.5rem;
-    margin: 0rem 0;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
-  li.winner {
-    background-color: #ffec83; /* Highlight the winner with a different background */
-    color: #000; /* Ensure text is readable on the new background */
-  }
-  
-  ol {
-    list-style: none; 
-    padding: 0;
-  }
-  
-  li {
-    background-color: rgba(255, 255, 255, 0.8); 
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-  }
   
   .view-quizzes-button {
     font-family: 'Cute Font', cursive;
@@ -57,5 +40,38 @@
   
   .view-quizzes-button:hover {
     background-color: #136e7e;
+  }
+  
+  .results-container ol {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .results-container li {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; 
+    font-family: 'Cute Font', cursive;
+    font-size: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+    margin: 10px auto; /* Keeps the boxes centered */
+    min-width: 350px;
+    max-width: 1000px; 
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    color: #0c5958;
+    transition: background-color 0.3s;
+  }
+  
+  /* If you want to highlight the winner */
+  .results-container li:first-child {
+    background-color: #ffe96b; /* Gold color for the first place */
+    color: #20546e;
+  }
+  
+  .results-container li .score {
+    color: #ff66f5; /* Change the color for the score */
   }
   
