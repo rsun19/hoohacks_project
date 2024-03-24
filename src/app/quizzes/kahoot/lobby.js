@@ -46,7 +46,9 @@ const LobbyPage = () => {
         console.log(JSON.stringify(questions).toString())
         socket.on('currentPlayers', function (data) {
           console.log(JSON.parse(data))
-          setPlayers(JSON.parse(data))
+          if (players) {
+            setPlayers(JSON.parse(data))
+          }
         })
         console.log('connected to localhost:3000')
         socket.on('startGame', function (data) {
@@ -59,7 +61,9 @@ const LobbyPage = () => {
       console.log(JSON.stringify(questions).toString())
       socket.on('currentPlayers', function (data) {
         console.log(JSON.parse(data))
-        setPlayers(JSON.parse(data))
+        if (players) {
+          setPlayers(JSON.parse(data))
+        }
       })
       socket.on('startGame', function (data) {
         redirectToGame()

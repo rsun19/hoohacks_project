@@ -1,7 +1,9 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import './scoreboard.css'
+import { socket } from '../../../../socket.js'
+import startFutureRound from './startNextRound'
 
 // eslint-disable-next-line react/prop-types
 const Scoreboard = ({ playerScores }) => {
@@ -12,8 +14,26 @@ const Scoreboard = ({ playerScores }) => {
   const userList = userString.split(',')
   const scoreList = scoreString.split(',')
   const handleNextQuestion = () => {
-    window.location.href = `/quizzes/kahoot/game?next=${currentQuestionIndex}`
+    socket.emit('startNextRound', currentQuestionIndex.toString())
+    console.log(currentQuestionIndex.toString)
+    // window.location.href = `/quizzes/kahoot/game?next=${currentQuestionIndex}`
   }
+
+  useEffect(() => {
+    // get questions FIRST!!
+
+    // socket.connect('http://localhost:3030')
+    socket.on('connect', function () {
+      socket.on('startNextRoundNow', function (data) {
+        console.log(data)
+        startFutureRound(Number(data))
+      })
+    })
+    socket.on('startNextRoundNow', function (data) {
+      console.log(data)
+      startFutureRound(Number(data))
+    })
+  }, [])
 
   return (
     <div className="scoreboard-container"> {/* Ensure this matches your CSS class */}

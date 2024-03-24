@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams, redirect } from 'next/navigation'
 import './game.css'
-import { SessionProvider, useSession, signIn } from 'next-auth/react'
+import { socket } from '../../../socket.js'
+import { SessionProvider, useSession } from 'next-auth/react'
 
 const questions = [
   {
@@ -66,14 +67,25 @@ const Game = () => {
 
   useEffect(() => {
     if (timer === 0) {
+      const [onlyElementKey] = Object.keys(playerScores)
+      const playerValue = playerScores[onlyElementKey]
+      socket.on('connect', function () {
+        socket.emit('addScore', JSON.stringify([email, playerValue]).toString())
+      })
+      socket.emit('addScore', JSON.stringify([email, playerValue]).toString())
       const nextQuestion = currentQuestion + 1
       if (nextQuestion < questions.length) {
+        console.log('player scores:')
+        console.log(playerScores)
         if (nextQuestion === 0) {
+          // first
           redirect(`/quizzes/kahoot/game/scoreboard?next=${currentQuestion + 1}&user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=120,100`)
         } else {
           redirect(`/quizzes/kahoot/game/scoreboard?next=${currentQuestion + 1}&user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=240,100`)
         }
       } else {
+        console.log('player scores:')
+        console.log(playerScores)
         redirect('/quizzes/kahoot/game/results?user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=240,100')
         setTimer(questionTimer)
         setStartTime(Date.now())
@@ -97,12 +109,12 @@ const Game = () => {
     return points
   }
 
-  const handleAnswerButtonClick = (isCorrect, index) => {
+  const handleAnswerButtonClick = (index) => {
     setSelectedAnswerIndex(index)
     const endTime = Date.now()
     const timeTaken = (endTime - startTime) / 1000
     const points = calculatePoints(timeTaken)
-
+    const isCorrect = questions[currentQuestion].answerOptions[index].isCorrect
     if (isCorrect) {
       setPlayerScores((prevScores) => ({
         ...prevScores,
@@ -111,6 +123,7 @@ const Game = () => {
     }
 
     const nextQuestion = currentQuestion + 1
+    // this doesnt get run
     if (nextQuestion < questions.length) {
       if (currentQuestion === 0) {
         redirect('/quizzes/kahoot/game/scoreboard?user=dcq2ds@gmail.com,mindyzheng2@gmail.com&score=120,100')
