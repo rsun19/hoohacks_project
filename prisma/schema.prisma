@@ -10,6 +10,7 @@ datasource db {
 model Answer {
   id          Int     @id @default(autoincrement())
   answer      String
+  isCorrect   Int
   question    Question @relation(fields: [questionId], references: [id])
   questionId  Int
 }

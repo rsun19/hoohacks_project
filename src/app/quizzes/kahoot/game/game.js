@@ -31,7 +31,8 @@ const questionTimer = 10
 const Game = () => {
   const searchParams = useSearchParams()
   const initialQuestionIndex = parseInt(searchParams.get('next') || '0', 10)
-  const [currentQuestion, setCurrentQuestion] = useState(initialQuestionIndex)
+  const [currentQuestion] = useState(initialQuestionIndex)
+  const [startTime, setStartTime] = useState(Date.now())
   const [timer, setTimer] = useState(questionTimer)
   const [playerScores, setPlayerScores] = useState({})
 
@@ -42,6 +43,8 @@ const Game = () => {
         redirect(`/quizzes/kahoot/game/scoreboard?next=${currentQuestion + 1}`)
       } else {
         redirect('/quizzes/kahoot/game/results')
+        setTimer(questionTimer)
+        setStartTime(Date.now())
       }
     } else {
       const countdown = setInterval(() => {
