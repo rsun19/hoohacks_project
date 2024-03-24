@@ -27,7 +27,8 @@ const Scoreboard = ({ playerScores }) => {
     socket.on('connect', function () {
       socket.emit('getPlayerScores', 'hello')
       socket.on('givingPlayerScore', function (data) {
-        console.log(data)
+        console.log('data')
+        console.log(JSON.parse(data))
         if (scoreMap) {
           setScoreMap(JSON.parse(data))
         }
