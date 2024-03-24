@@ -1,5 +1,5 @@
 const { createServer } = require('http')
-const { Server } = require('socket.io')
+// const { Server } = require('socket.io')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -13,21 +13,21 @@ nextApp.prepare().then(() => {
     return nextHandler(req, res)
   })
 
-  const io = new Server(server)
+  // const io = new Server(server)
 
-  io.on('connection', (socket) => {
-    console.log('a user connected:', socket.id)
+  // io.on('connection', (socket) => {
+  //   console.log('a user connected:', socket.id)
 
-    socket.on('joinLobby', () => {
-      console.log(`${socket.id} joined the lobby`)
-      io.emit('lobbyUpdate', { user: socket.id, action: 'joined' })
-    })
+  //   socket.on('joinLobby', () => {
+  //     console.log(`${socket.id} joined the lobby`)
+  //     io.emit('lobbyUpdate', { user: socket.id, action: 'joined' })
+  //   })
 
-    socket.on('disconnect', () => {
-      console.log('user disconnected:', socket.id)
-      io.emit('lobbyUpdate', { user: socket.id, action: 'left' })
-    })
-  })
+  //   socket.on('disconnect', () => {
+  //     console.log('user disconnected:', socket.id)
+  //     io.emit('lobbyUpdate', { user: socket.id, action: 'left' })
+  //   })
+  // })
 
   server.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`)

@@ -5,10 +5,13 @@ import io from 'socket.io-client'
 import './lobby.css'
 import getSessionDetails from '../../getSession'
 import { SessionProvider, useSession, signIn } from 'next-auth/react'
+import { socket } from '../../socket.js'
+import { redirect } from 'next/navigation'
+import redirectToGame from './client-redirect'
 
-const socket = io('http://localhost:3030')
+// const socket = io('http://localhost:3030')
 
-const email = ''
+let email = ''
 
 export default function Home () {
   return (
@@ -25,14 +28,19 @@ const LobbyPage = () => {
 
   useEffect(() => {
     if (status === 'authenticated' && session) {
-      console.log(session.user.email)
+      email = session.user.email
+    }
+  })
+
+  useEffect(() => {
+    if (email !== '') {
+      console.log(email)
       // get questions FIRST!!
 
       // socket.connect('http://localhost:3030')
       socket.on('connect', function () {
-      // setInterval(function () {
-        socket.emit('userPresent', session.user.email)
-        // }, 3000)
+        console.log('emitting email' + email)
+        socket.emit('userPresent', email)
         socket.emit('questions', JSON.stringify(questions).toString())
         console.log(JSON.stringify(questions).toString())
         socket.on('currentPlayers', function (data) {
@@ -40,9 +48,32 @@ const LobbyPage = () => {
           setPlayers(JSON.parse(data))
         })
         console.log('connected to localhost:3000')
+        socket.on('startGame', function (data) {
+          redirectToGame('/quizzes/kahoot/game')
+        })
       })
+      console.log('emitting email' + email)
+      socket.emit('userPresent', email)
+      socket.emit('questions', JSON.stringify(questions).toString())
+      console.log(JSON.stringify(questions).toString())
+      socket.on('currentPlayers', function (data) {
+        console.log(JSON.parse(data))
+        setPlayers(JSON.parse(data))
+      })
+      socket.on('startGame', function (data) {
+        redirectToGame()
+        // router.push('/quizzes/kahoot/game')
+      })
+      // return () => {
+      //   console.log('disconenct')
+      //   socket.disconnect()
+      // }
     }
-  }, [status, session])
+  }, [email])
+
+  const startGame = () => {
+    socket.emit('startGameNow', email)
+  }
 
   return (
     <div className="lobby-container">
@@ -52,9 +83,9 @@ const LobbyPage = () => {
           <li key={index} className="player-item">{player}</li>
         ))}
       </ul>
-      <Link href="/quizzes/kahoot/game" passHref>
-        <button className="start-game-button">Start Game</button>
-      </Link>
+      {/* <Link href="/quizzes/kahoot/game" passHref> */}
+        <button className="start-game-button" onClick={startGame}>Start Game</button>
+      {/* </Link> */}
     </div>
   )
 }
